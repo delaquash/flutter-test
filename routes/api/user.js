@@ -9,8 +9,8 @@ router.get('/', [
     check('name', 'Name is required').not().isEmpty().isLength({min: 5}).withMessage('Name must have more than 5 characters'),
     check('github', 'Github username is required with the @ symbol').not().isEmpty().matches(
         (/\@/)),
-    check('email', 'Please provide a valid email').not().isEmpty().normalizeEmail(),
-    check('mobile', "Please provide correct phone number").isLength({ min: 11 }).withMessage('Name must have more than 11 number'),
+    check('email', 'Please provide a valid email').not().isEmpty().isEmail().normalizeEmail(),
+    check('mobile', "Please provide correct phone number").isLength({ min: 11 }).withMessage('Number must not be less than 11').isLength({ max: 12 }),
     check('twitter', "Kindly input your correct twitter username with the @ symbol").not().isEmpty().trim().matches(
         (/\@/)
       )
